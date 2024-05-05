@@ -17,24 +17,5 @@ services:
     volumes:
         - sqlVolume:/var/opt/mssql
     
-  # webapi:
-  #   image: sammykirigha/comply-test-api
-  #   build:
-  #     context: .
-  #     dockerfile: todo-api/Dockerfile
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Development
-  #     - ASPNETCORE_HTTP_PORTS=80
-  #     - ASPNETCORE_HTTPS_PORTS=443
-  #   ports:
-  #     - "5000:80"
-  #     - "7134:443"
-  #   container_name: comply-test-api
-  #   hostname: comply-test-api
-  #   restart: unless-stopped
-  #   volumes:
-  #     - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-  #     - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-    
 volumes:
   sqlVolume:
