@@ -1,6 +1,6 @@
 namespace TodoApi.Models;
 
-public record TodoListDto
+public record TodoDetailsDto
 {
     public long Id { get; set; }
     public int? Row { get; set; }

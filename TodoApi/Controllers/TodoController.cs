@@ -19,7 +19,7 @@ public class TodoController : ControllerBase
     public async Task<ActionResult> Index()
     {
         var todos = (await _todoService.GetTodoList())
-            .Select((todo, index) => new TodoListDto
+            .Select((todo, index) => new TodoDetailsDto
             {
                 Id = todo.Id,
                 Row = index,
@@ -38,12 +38,12 @@ public class TodoController : ControllerBase
         return CreatedAtRoute(default, todo);
     }
 
-    [HttpGet("factorial")]
+    [HttpGet("Factorial")]
     public async Task<ActionResult> Factorial()
     {
-        var factorials = new ConcurrentBag<TodoListDto>();
+        var factorials = new ConcurrentBag<TodoDetailsDto>();
         var todos = (await _todoService.GetTodoList())
-            .Select((todo, index) => new TodoListDto
+            .Select((todo, index) => new TodoDetailsDto
             {
                 Id = todo.Id,
                 Row = index,
