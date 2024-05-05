@@ -25,4 +25,4 @@ To run the API, execute this command: `dotnet run --project todo-api --launch-pr
 The frontend can be run by first installing packages with `npm i`, then start server with: `npm start` command
 
 ## Integration Tests
-The API integration tests can be executed by this command `dotnet test Todo.IntegrationTests`
+The API integration tests can be executed by this command `dotnet test TodoTest`
