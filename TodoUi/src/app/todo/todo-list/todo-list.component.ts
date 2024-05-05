@@ -66,7 +66,13 @@ export class TodoListComponent implements OnInit {
 
   addTodo(): void {
     this.dialogService.open(TodoAddComponent, {
-      header: 'Add a Todo'
+      header: 'Add a Todo',
+      width: '50vw',
+      contentStyle: { overflow: 'auto' },
+      breakpoints: {
+        '960px': '75vw',
+        '640px': '90vw'
+      },
     })
     .onClose
     .pipe(takeUntilDestroyed(this.destroyRef$))

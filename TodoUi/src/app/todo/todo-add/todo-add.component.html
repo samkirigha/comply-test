@@ -1,18 +1,18 @@
 <form [formGroup]="form">
   <div class="field">
     <label for="name">Title</label>
-    <input type="text" pInputText formControlName="title" />
-    <small *ngIf="form.getError('required', 'title')" class="p-error">
+    <input pInputText formControlName="title" class="w-full" />
+    <small *ngIf="form.get('title')?.touched && form.getError('required', 'title')" class="p-error">
       Title is required.
     </small>
   </div>
   <div class="field">
     <label for="description">Description</label>
-    <textarea id="description" pInputTextarea formControlName="description" rows="3" cols="20">
+    <textarea pInputTextarea formControlName="description" rows="6" cols="20" class="w-full">
     </textarea>
   </div>
 </form>
 <div class="flex justify-content-end gap-3">
   <p-button label="Submit" [loading]="isSubmitting" (onClick)="submit()"></p-button>
-  <p-button label="Cancel" (onClick)="dialogRef.close()"></p-button>
+  <p-button label="Cancel" (onClick)="cancel()"></p-button>
 </div>

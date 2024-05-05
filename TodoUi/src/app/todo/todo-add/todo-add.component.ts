@@ -36,7 +36,7 @@ export class TodoAddComponent {
 
   private destroyRef$ = inject(DestroyRef);
 
-  constructor(private todoService: TodoService, public dialogRef: DynamicDialogRef) { }
+  constructor(private todoService: TodoService, private dialogRef: DynamicDialogRef) { }
 
   submit(): void {
     this.form.markAllAsTouched();
@@ -47,5 +47,10 @@ export class TodoAddComponent {
       finalize(() => this.isSubmitting = false),
       takeUntilDestroyed(this.destroyRef$)
     ).subscribe(todo => this.dialogRef.close(todo));
+  }
+
+  cancel(): void {
+    this.form.reset();
+    this.dialogRef.close();
   }
 }
