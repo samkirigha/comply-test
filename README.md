@@ -19,7 +19,7 @@ The EF Core tools is needed to create a database and run migrations. Runs this c
 Once the EF Core tools is installed, proceed to apply any pending migrations by executing this command `dotnet ef database  update -- --Database "Data Source=..\\todo.db"`
 
 ## API
-To run the API, execute this command: `dotnet run --project todo-api --launch-profile http`
+To run the API, execute this command: `dotnet run --project TodoApi --launch-profile http`
 
 ## UI
 The frontend can be run by first installing packages with `npm i`, then start server with: `npm start` command
