@@ -54,7 +54,7 @@ public class TodoController : ControllerBase
         Parallel.ForEach(todos, todo =>
         {
             var row = todo.Row.Value;
-            todo.Factorial = _todoService.FindFactorial(row);
+            todo.Factorial = _todoService.FindFactorial(row + 1);
 
             factorials.Add(todo);
         });

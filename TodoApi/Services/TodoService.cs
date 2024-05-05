@@ -38,6 +38,12 @@ public class TodoService : ITodoService
             factorial *= i;
         }
 
+        // var factorial = Enumerable
+        //     .Range(1, row)
+        //     .Aggregate(1, (factorial, row) => factorial * row);
+
+        // return factorial;
+
         return factorial;
     }
 }
