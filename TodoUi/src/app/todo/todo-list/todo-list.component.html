@@ -1,7 +1,10 @@
 <p-dataView #dv [value]="todos" [layout]="layout">
   <ng-template pTemplate="header">
     <div class="flex justify-content-between">
-      <p-button label="Get Factorial" (onClick)="getFactorial()"></p-button>
+      <div class="flex gap-3">
+        <p-button label="Get Factorial" (onClick)="getFactorial()"></p-button>
+        <p-button label="Add Todo" (onClick)="addTodo()"></p-button>
+      </div>
       <p-dataViewLayoutOptions />
     </div>
   </ng-template>

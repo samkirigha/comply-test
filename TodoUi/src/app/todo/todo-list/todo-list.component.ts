@@ -8,8 +8,10 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { RatingModule } from 'primeng/rating';
+import { DynamicDialogModule, DialogService } from 'primeng/dynamicdialog';
 import { TodoService } from '../todo.service';
 import { TodoDetails } from '../todo.model';
+import { TodoAddComponent } from '../todo-add/todo-add.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -21,11 +23,15 @@ import { TodoDetails } from '../todo.model';
     SkeletonModule,
     ButtonModule,
     TagModule,
-    RatingModule
+    RatingModule,
+    DynamicDialogModule
   ],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.scss',
-  providers: [TodoService]
+  providers: [
+    DialogService,
+    TodoService
+  ]
 })
 export class TodoListComponent implements OnInit {
 
@@ -36,7 +42,7 @@ export class TodoListComponent implements OnInit {
 
   private destroyRef$ = inject(DestroyRef);
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService, private dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.getTodos();
@@ -56,5 +62,15 @@ export class TodoListComponent implements OnInit {
         takeUntilDestroyed(this.destroyRef$),
         finalize(() => this.isLoading = false)
       ).subscribe(todos => this.todos = todos);
+  }
+
+  addTodo(): void {
+    this.dialogService.open(TodoAddComponent, {
+      header: 'Add a Todo'
+    })
+    .onClose
+    .pipe(takeUntilDestroyed(this.destroyRef$))
+    .subscribe(todo => todo && this.todos.push(todo));
+
   }
 }
