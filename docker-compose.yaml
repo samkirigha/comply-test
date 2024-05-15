@@ -1,21 +1,32 @@
 version: '3.4'
 
 services:
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
-    environment:
-        - ACCEPT_EULA=Y
-        - MSSQL_SA_PASSWORD=ComplyTest2024@1234
-        - UID=10001
-        - GID=10001
-        - MSSQL_PID:Evaluation
+  webapi:
+    image: sammykirigha/comply-test-api
+    build:
+      context: ./TodoApi/
+      dockerfile: Dockerfile
     ports:
-        - "14333:1433"
-    container_name: comply-test-sqlserver
-    hostname: comply-test-sqlserver
+      - "8080:8080"
+    container_name: comply-test-api
+    hostname: comply-test-api
     restart: unless-stopped
-    volumes:
-        - sqlVolume:/var/opt/mssql
-    
-volumes:
-  sqlVolume:
+  
+  ui:
+    image: sammykirigha/comply-test-ui
+    build:
+      context: ./TodoUi/
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    expose:
+      - 80
+    depends_on:
+      - webapi
+    container_name: comply-test-ui
+    networks:
+      - comply-test-network
+
+networks:
+  comply-test-network:
+    driver: bridge

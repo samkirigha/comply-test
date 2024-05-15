@@ -10,14 +10,14 @@ export class TodoService {
   constructor(private http: HttpClient) { }
 
   getTodos(): Observable<TodoDetails[]> {
-    return this.http.get<TodoDetails[]>(environment.API);
+    return this.http.get<TodoDetails[]>(environment.API_BASE_URL);
   }
 
   getFactorial(): Observable<TodoDetails[]> {
-    return this.http.get<TodoDetails[]>(environment.API + 'Factorial');
+    return this.http.get<TodoDetails[]>(environment.API_BASE_URL + 'Factorial');
   }
 
   addTodo(todo: Todo): Observable<Todo> {
-    return this.http.post<Todo>(environment.API, todo);
+    return this.http.post<Todo>(environment.API_BASE_URL, todo);
   }
 }

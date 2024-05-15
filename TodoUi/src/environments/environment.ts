@@ -1,3 +1,4 @@
 export const environment = {
-  API: 'http://localhost:5013/api/Todo/'
+  prodcution: false,
+  API_BASE_URL: 'http://localhost:8080/api/Todo/'
 };
