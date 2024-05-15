@@ -1,0 +1,23 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.4"
+services:
+  webapi:
+    build:
+      context: "C:\\Users\\SamuelKirigha\\projects\\Azure_learning\\comply-test\\\
+        TodoApi"
+      dockerfile: "Dockerfile"
+      target: "build"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/TodoApi.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "sammykirigha/comply-test-api:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\SamuelKirigha\\.nuget\\packages:/root/.nuget/packages"
+    - "C:\\Users\\SamuelKirigha\\projects\\Azure_learning\\comply-test\\TodoApi:/app:rw"
+    - "C:\\Users\\SamuelKirigha\\projects\\Azure_learning\\comply-test:/src:rw"
+    working_dir: "/app"
