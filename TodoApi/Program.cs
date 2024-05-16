@@ -34,13 +34,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
-{
-    var dbContext = serviceScope.ServiceProvider.GetRequiredService<TodoDbContext>();
-    dbContext.Database.EnsureCreated();
-    dbContext.Database.Migrate();
-}
-
 
 app.UseExceptionHandler();
 app.UseRouting();

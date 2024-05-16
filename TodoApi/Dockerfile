@@ -12,6 +12,7 @@ RUN dotnet restore
  
 # copy everything else and build app
 COPY . .
+RUN dotnet ef database  update -- --Database "Data Source=..\\todo.db"
 RUN dotnet publish -c Release -o ./build
  
 # final stage/image
